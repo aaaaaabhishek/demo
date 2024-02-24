@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Subscription Plan - Book My Trip</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<style>
+  /* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  color: #333;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+main {
+  padding: 20px;
+}
+.subscription-plan1 {
+ color: black;
+  background-color:#f0a725 ;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.subscription-plan {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.subscription-plan h2 {
+  color: black;
+  font-size: 24px;
+}
+
+.subscription-plan p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.subscription-plan ul {
+  margin-left: 20px;
+}
+
+.subscription-plan ol {
+  margin-left: 20px;
+}
+
+.subscription-plan li {
+  margin-bottom: 5px;
+}
+
+.subscription-plan strong {
+  color: black;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  header {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  nav ul li {
+    margin-right: 10px;
+  }
+
+  .subscription-plan {
+    padding: 10px;
+  }
+
+  .subscription-plan h2 {
+    font-size: 20px;
+  }
+}
+.subscription-plan1 h2 {
+  color: black; /* Change text color to silver */
+  font-size: 24px;
+}
+.subscription-plan1 p {
+  color:  black; /* Change text color to silver */
+  font-size: 24px;
+}
+  .green-button {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+/* Popup styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: goldenrod; /* Change background color to golden */
+  color: black; /* Change text color to black */
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+</style>
+<body>
+<header>
+  <h1>Suite Subscription Plan</h1>
+  <nav>
+    <ul>
+      <li>  <a href="home">Home</a></li>
+      <li> <a href="service">Services</a></li>
+      <li> <a href="Contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="subscription-plan">
+    <h2>Suite Subscription Plan Details</h2>z
+    <form id="subscriptionForm" action="subscribe-Suite" method="post" onsubmit="return showPopup()">
+      <div class="subscription-plan1">
+        <h2>Suite Subscription Plan</h2>
+        <p>This plan includes:</p>
+        <ul>
+          <li>Access to all features</li>
+          <li>24/7 customer support</li>
+          <li>Unlimited listings</li>
+        </ul>
+<!--        <input type="hidden" name="subscriptionPrice" id="subscriptionPriceInput" value="899">-->
+        <input type="hidden" name="subscriptionPrice" id="subscriptionPriceInput" >
+
+        <p><strong>Price:</strong> <span id="subscriptionPrice">899</span> per month</p>
+        <input type="radio" name="duration" value="30" checked> 30 days<br>
+        <input type="radio" name="duration" value="60"> 60 days<br>
+        <input type="radio" name="duration" value="90"> 90 days<br>
+        <button type="submit" class="green-button">Subscribe Now</button>
+      </div>
+    </form>
+    <p><strong>Features:</strong></p>
+    <ul>
+      <li>Access to exclusive travel deals and discounts.</li>
+      <li>Priority booking for popular destinations.</li>
+      <li>Personalized travel recommendations based on preferences.</li>
+      <li>Early access to new features and updates.</li>
+      <li>24/7 customer support for travel assistance.</li>
+      <li>Regular newsletter with travel tips and destination highlights.</li>
+      <li>Access to luxury accommodations and VIP experiences.</li>
+      <li>Complimentary airport transfers.</li> <!-- New feature for Suite Plan -->
+      <li>Special concierge service for personalized itinerary planning.</li> <!-- New feature for Suite Plan -->
+    </ul>
+
+    <p><strong>Subscription Benefits:</strong></p>
+    <ul>
+      <li>Unlimited access to all standard features.</li>
+      <li>Flexible cancellation policy.</li>
+      <li>No hidden fees or extra charges.</li>
+    </ul>
+    <p><strong>How to Subscribe:</strong></p>
+    <ol>
+      <li>Visit the "Subscription" section on the website.</li>
+      <li>Choose the "Standard Plan" option.</li>
+      <li>Enter your payment details and create an account.</li>
+      <li>Start enjoying the benefits of your subscription immediately.</li>
+    </ol>
+    <p><strong>Cancellation Policy:</strong></p>
+    <ul>
+      <li>Subscribers can cancel their subscription at any time with no penalty.</li>
+      <li>Refunds will be issued for the remaining subscription period upon cancellation.</li>
+    </ul>
+    <p><strong>Customer Support:</strong></p>
+    <ul>
+      <li>Dedicated customer support team available 24/7 via email and live chat.</li>
+      <li>Prompt assistance with any subscription-related inquiries or issues.</li>
+    </ul>
+    <p><strong>Terms and Conditions:</strong></p>
+    <ul>
+      <li>Subscription will automatically renew each month unless canceled.</li>
+      <li>Payment will be charged to the subscriber's chosen payment method at the beginning of each billing cycle.</li>
+    </ul>
+  </section>
+</main>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h2>Thank you for subscribing!</h2>
+    <p>Your subscription has been successfully processed.</p>
+    <p>Enjoy your benefits!</p>
+  </div>
+</div>
+<script>
+  // JavaScript to update the subscription price based on selected duration
+    const durationRadios = document.querySelectorAll('input[name="duration"]');
+    const subscriptionPriceInput = document.getElementById('subscriptionPriceInput');
+    const subscriptionPrice = document.getElementById('subscriptionPrice');
+
+    durationRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            const selectedDuration = this.value;
+            let price;
+            if (selectedDuration === '30') {
+                price = 899;
+            } else if (selectedDuration === '60') {
+                price = 999;
+            } else if (selectedDuration === '90') {
+                price = 1099;
+            }
+            subscriptionPriceInput.value= price; // Update the hidden input value
+           subscriptionPrice.textContent = price; // Update the price displayed on the page
+        });
+    });
+
+  // Function to show the popup
+  function showPopup() {
+  // Show the popup
+  document.getElementById('popup').style.display = 'block';
+
+  // Allow form submission
+  return true;
+}
+  // Function to close the popup
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+
+<footer>
+  <p>&copy; 2024 Book My Trip. All rights reserved.</p>
+</footer>
+</body>
+</html>

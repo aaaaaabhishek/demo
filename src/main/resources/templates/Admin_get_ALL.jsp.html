@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Customer Plans</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .pdf-container {
+      text-align: right;
+      margin-top: 10px; /* Add margin for spacing */
+    }
+    .pdf-button {
+      background-color: #4CAF50; /* Green background */
+      border: none;
+      color: white;
+      padding: 12px 22px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <tr>
+    <th>Customer Plan Id</th>
+    <th>User Id</th>
+    <th>Subscription Active</th>
+    <th>Subscription Active Date</th>
+    <th>Subscription Expiration Date</th>
+    <th>Number Of Days</th>
+    <th>Plan Name</th>
+    <th>Subscription Price</th>
+    <th>Delete</th>
+    <th>Update</th>
+  </tr>
+  <tr th:each="plan : ${plan}">
+    <td th:text="${plan.custumerPlanId}"></td>
+    <td th:text="${plan.userId}"></td>
+    <td th:text="${plan.subscriptionActive}"></td>
+    <td th:text="${plan.subscriptionActiveDate}"></td>
+    <td th:text="${plan.subscriptionExpirationDate}"></td>
+    <td th:text="${plan.numberOfDays}"></td>
+    <td th:text="${plan.PlanName}"></td>
+    <td th:text="${plan.subscriptionPrice}"></td>
+    <td><a th:href="@{'/delete/' + ${plan.custumerPlanId}}">Delete</a></td>
+    <td><a th:href="@{'/update/' + ${plan.custumerPlanId}}">Update</a></td>
+  </tr>
+</table>
+<div class="pdf-container">
+  <a href="pdf/generate" class="pdf-button">Generate PDF</a>
+</div>
+<div class="pdf-container">
+  <a href="excel/export" class="pdf-button">Generate Excel</a>
+</div>
+</body>
+</html>

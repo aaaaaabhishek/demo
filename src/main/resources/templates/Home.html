@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- xmlns:th="http://www.thymeleaf.org">&ndash;&gt;-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book My Trip</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4285f4;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      margin: 0 8px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    .menu-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Added to create space between menu items and container */
+      padding: 1rem;
+      background-color: #333;
+    }
+
+    .menu-bar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 8px;
+      padding: 8px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4285f4;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .booking-summary {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+    }
+
+    .image-slider {
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      max-height: 400px; /* Set maximum height for the images */
+    }
+   .green-button {
+    background-color: green;
+    color: white;
+}
+.container {
+      display: inline-block;
+      cursor: pointer;
+      /* Positioning */
+      position: relative;
+      right: 1rem; /* Adjust as needed */
+    }
+
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: #fff; /* Change color as needed */
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    .change .bar1 {
+      transform: translate(0, 11px) rotate(-45deg);
+    }
+
+    .change .bar2 {
+      opacity: 0;
+    }
+
+    .change .bar3 {
+      transform: translate(0, -11px) rotate(45deg);
+    }
+    .menu-content {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      width: 150px; /* Adjust width as needed */
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      margin-left: 50px; /* Adjust distance from the bars */
+    }
+
+    .menu-content a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    .menu-content a:hover {
+      background-color: #555;
+    }
+   .container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.menu-content {
+  display: none;
+  position: fixed;
+  top: 50px; /* Adjust as needed */
+  right: 20px;
+  background-color: #333;
+  width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.container.active + .menu-content {
+  display: block;
+}
+
+.menu-content a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.menu-content a:hover {
+  background-color: #555;
+}
+
+
+  </style>
+</head>
+<body>
+<header>
+  <h1>Book My Trip</h1>
+<!-- <span th:text="${session.getAttribute('loginId') != null ? session.getAttribute('loginId') : 'Guest'}">Guest</span>&ndash;&gt;-->
+</header>
+
+<div class="menu-bar">
+  <a href="home">Home</a>
+  <a href="service">Services</a>
+  <a href="Contact">Contact</a>
+  <a href="forget">Forget</a>
+<a href="Logout">Logout</a>
+  <a href="admin">Admin</a>
+
+  <button class="green-button" onclick="window.location.href='signup'">Signup</button>
+  <button class="green-button" onclick="window.location.href='signin'">Signin</button>
+  <div class="container" onclick="toggleMenu(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+  <div class="menu-content">
+    <a href="standard">Standard</a>
+    <a href="deluxe">Deluxe</a>
+    <a href="suite">Suite</a>
+  </div>
+  <!--  <a href="Home">Home</a>-->
+  <!--  <a href="service">Services</a>-->
+  <!--  <a href="Contact">Contact</a>-->
+  <!--  <a href="forget">Forget</a>-->
+  <!-- Menu icon -->
+</div>
+
+<main>
+  <div class="image-slider">
+    <div class="slides">
+      <div class="slide"><img src="https://www.travelchhutichhuti.com/images/daringbadi-odisha-tour-package.jpg" alt="Destination 2" height="100%" width="100%"></div>
+      <div class="slide"><img src="https://media.licdn.com/dms/image/D5612AQHYtOBHGCcDPA/article-cover_image-shrink_600_2000/0/1704606295718?e=2147483647&v=beta&t=OKJvfuwjbeJQdL9UzFhPvzHf1kl5RlyNv_qaylhU6Kc" alt="Destination 2" height="100%" width="100%"></div>
+      <div class="slide"><img src="https://i.ytimg.com/vi/zaS8VpRh_ys/maxresdefault.jpg" alt="Destination 3" height="100%" width="100%"></div>
+      <!-- Add more slides with different destination images -->
+    </div>
+  </div>
+
+  <section id="booking-form-section">
+    <form id="booking-form" action="bookings" method="post"> <!-- Updated form tag with action attribute -->
+      <label for="check-in-date">Check-in Date:</label>
+      <input type="date" id="check-in-date" name="check_In_Date" required>
+
+      <label for="check-out-date">Check-out Date:</label>
+      <input type="date" id="check-out-date" name="check_Out_Date" required>
+
+      <label for="room-type">Room Type:</label>
+      <select id="room-type" name="Room_Type" required>
+        <option value="standard">Standard Room</option>
+        <option value="deluxe">Deluxe Room</option>
+        <option value="suite">Suite</option>
+      </select>
+
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" name="number_of_Guests" min="1" required>
+
+      <button type="submit">Book Now</button> <!-- Changed button type to submit -->
+    </form>
+  </section>
+
+  <section id="booking-summary-section" class="booking-summary" style="display: none;">
+    <h2>Booking Summary</h2>
+    <p><strong>Check-in Date:</strong> <span id="summary-check-in-date"></span></p>
+    <p><strong>Check-out Date:</strong> <span id="summary-check-out-date"></span></p>
+    <p><strong>Room Type:</strong> <span id="summary-room-type"></span></p>
+    <p><strong>Number of Guests:</strong> <span id="summary-guests"></span></p>
+  </section>
+
+</main>
+
+<script>
+  function submitForm() {
+    // Get form values
+    var checkInDate = document.getElementById('check-in-date').value;
+    var checkOutDate = document.getElementById('check-out-date').value;
+    var roomType = document.getElementById('room-type').value;
+    var guests = document.getElementById('guests').value;
+
+    // Update booking summary
+    document.getElementById('summary-check-in-date').innerText = checkInDate;
+    document.getElementById('summary-check-out-date').innerText = checkOutDate;
+    document.getElementById('summary-room-type').innerText = roomType;
+    document.getElementById('summary-guests').innerText = guests;
+
+    // Show booking summary
+    document.getElementById('booking-summary-section').style.display = 'block';
+    document.getElementById('success-message').style.display = 'block';
+    document.getElementById('booking-summary-section').style.display = 'none';
+  }
+
+  // Image slider functionality
+  var currentIndex = 0;
+  var slides = document.querySelector('.slides');
+  var totalSlides = document.querySelectorAll('.slide').length;
+
+  function showSlide(index) {
+    if (index >= totalSlides) {
+      currentIndex = 0;
+    } else if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else {
+      currentIndex = index;
+    }
+
+    slides.style.transform = 'translateX(' + -currentIndex * 100 + '%)';
+  }
+
+  setInterval(function () {
+    showSlide(currentIndex + 1);
+  }, 2000); // Change slide every 5 seconds
+
+  function toggleMenu(x) {
+    x.classList.toggle("change");
+    var menuContent = document.querySelector('.menu-content');
+    menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>

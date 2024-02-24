@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        a {
+            color: #5cb9fb !important;
+            text-decoration: none;
+        }
+        a1 {
+            color: #def1ff !important;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        form {
+            background-color: #000000;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(92, 35, 35, 0.1);
+            width: 350px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        h1 {
+            text-align: center;
+            color: #40ab38;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #43d722;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #81d9c3;
+        }
+        a {
+            color: #02090a;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="signin" method="post">
+    <h1>Login</h1>
+    <label for="usernameOrEmail">Username:</label>
+    <input type="text" id="usernameOrEmail" name="usernameOrEmail"><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br>
+    <button type="submit">Login</button>
+    <p class="error-message">Invalid username or password.</p>
+    <p style="text-align: center; margin-top: 15px;"><a1>Don't have an account? </a1><a href="signup">Sign up here</a></p>
+</form>
+<script>
+        function submitForm() {
+            var userEmail = document.getElementById('usernameOrEmail').value;
+            // Assuming your setUserName function is defined in the main page
+            window.opener.setUserName(userEmail);
+            return true; // To allow the form to be submitted
+        }
+    </script>
+</body>
+</html>

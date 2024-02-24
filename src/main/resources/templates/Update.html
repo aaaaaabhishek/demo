@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Customer Plans</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<form action="/customer/update" method="post"> <!-- Form starts here -->
+  <table>
+    <tr>
+      <th>Customer Plan Id</th>
+      <th>User Id</th>
+      <th>Subscription Active</th>
+      <th>Subscription Active Date</th>
+      <th>Subscription Expiration Date</th>
+      <th>Number Of Days</th>
+      <th>Plan Name</th>
+      <th>Subscription Price</th>
+    </tr>
+    <tr th:each="plan : ${plan}">
+      <td><input type="text" th:value="${plan.custumerPlanId}" name="custumerPlanId"></td>
+      <td><input type="text" th:value="${plan.userId}" name="userId"></td>
+      <td><input type="checkbox" th:checked="${plan.subscriptionActive}" name="subscriptionActive"></td>
+      <td><input type="text" th:value="${plan.subscriptionActiveDate}" name="subscriptionActiveDate"></td>
+      <td><input type="text" th:value="${plan.subscriptionExpirationDate}" name="subscriptionExpirationDate"></td>
+      <td><input type="text" th:value="${plan.numberOfDays}" name="numberOfDays"></td>
+      <td><input type="text" th:value="${plan.PlanName}" name="PlanName"></td>
+      <td><input type="text" th:value="${plan.subscriptionPrice}" name="subscriptionPrice"></td>
+    </tr>
+  </table>
+  <input type="submit" value="Update"> <!-- Submit button -->
+</form> <!-- Form ends here -->
+</body>
+</html>
